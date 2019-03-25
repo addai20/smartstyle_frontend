@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Nav from './Components/Nav'
-import ForecastContainer from './Containers/ForecastContainer'
+import ClothingContainer from './Containers/ClothingContainer'
+import OutfitContainer from './Containers/OutfitContainer'
+import Jumbotron from './Components/Jumbotron'
 const kelvinToFahrenheit = require('kelvin-to-fahrenheit');
 
 
@@ -12,12 +14,15 @@ class App extends Component {
 
     this.state = {
       userInfo:{},
+      cityName: "",
       todaysDate: {},
       weather:[],
       allItems: [],
       currentOutfit: [],
       currentTemp: null,
-      forecast: []
+      forecast: [],
+      closet:[],
+      ootd: []
     }
   }
 
@@ -36,11 +41,23 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      // debugger
       this.setState({
+        cityName: data.city.name,
         forecast: data.list,
         todaysDate: this.getCurrentTime(),
-        currentTemp: kelvinToFahrenheit(data.list[0].main.temp)
+        currentTemp: kelvinToFahrenheit(data.list[0].main.temp),
+        weather: data.list[0].weather,
+        weatherDesc: data.list[0].weather[0].description
       })
+    })
+
+    fetch('http://localhost:3001/items')
+    .then(res => res.json())
+    .then(wardrobe => {
+      console.log(wardrobe);
+      // debugger
+      this.setState({closet: wardrobe})
     })
   }
 
@@ -50,11 +67,20 @@ class App extends Component {
     return (
       <div className="App">
         <Nav
+        />
+        <Jumbotron
           todaysDate={this.state.todaysDate}
-        />
-        <ForecastContainer
+          weatherDesc={this.state.weatherDesc}
+          currentTemp={this.state.currentTemp}
+          cityName={this.state.cityName}
+          />
+        <ClothingContainer
+          closet={this.state.closet}
           forecast={this.state.forecast}
-        />
+          />
+        <OutfitContainer
+          ootd={this.state.ootd}
+          />
 
 
 
