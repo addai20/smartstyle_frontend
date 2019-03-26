@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class ClothingCard extends Component {
   render(){
     return (
-      <div className="p-2 bd-highlight" >
+      <div className="p-2 bd-highlight" onClick={()=>this.props.onClickHandler(this.props.item)}>
         <div className="card-body">
           <img
             src={this.props.item.img_url}

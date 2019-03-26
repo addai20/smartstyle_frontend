@@ -14,6 +14,7 @@ class App extends Component {
 
     this.state = {
       userInfo:{},
+      bodyParts: ["head", "torso", "legs", "feet"],
       cityName: "",
       todaysDate: {},
       weather:[],
@@ -22,12 +23,18 @@ class App extends Component {
       currentTemp: null,
       forecast: [],
       closet:[],
-      ootd: []
+      ootd: [{body_part: "head"},{img_url: ""},{},{}]
     }
   }
 
   getCurrentTime(){
     return new Date();
+  }
+
+  onClickHandler = (itemObj) =>{
+    debugger
+    console.log("On click handler invoked!");
+    this.setState({ootd[itemObj.bodyPart] = itemObj})
   }
 
 
@@ -77,8 +84,10 @@ class App extends Component {
         <ClothingContainer
           closet={this.state.closet}
           forecast={this.state.forecast}
+          onClickHandler={this.onClickHandler}
           />
         <OutfitContainer
+          bodyParts={this.state.bodyParts}
           ootd={this.state.ootd}
           />
 

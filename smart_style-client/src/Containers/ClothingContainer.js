@@ -14,6 +14,7 @@ class ClothingContainer extends Component {
           return <ClothingCard
             key={idx}
             item={ele}
+            onClickHandler={this.props.onClickHandler}
 
           />
         })}

@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import OutfitCard from '../Components/OutfitCard'
 
 class OutfitContainer extends React.Component {
-  constructor(){
-    super()
-      this.state = {
-        bodyParts: ["head", "torso", "legs", "feet"]
-      }
-  }
 
   render(){
     return(
       <div>
+        {this.props.bodyParts.map(bp=>{
+           return <OutfitCard
+             bodyPart={bp}
+            />
 
+
+        })}
       </div>
     )
   }
