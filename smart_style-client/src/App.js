@@ -19,6 +19,7 @@ class App extends Component {
       todaysDate: {},
       weather:[],
       allItems: [],
+      weatherMain: null,
       currentOutfit: [],
       currentTemp: null,
       forecast: [],
@@ -35,13 +36,11 @@ class App extends Component {
     debugger
     console.log("On click handler invoked!");
     let ootdNow = this.state.ootd
-    debugger 
+    debugger
   }
 
 
   componentDidMount(){
-
-
     // console.log("Component Mounted")
     // api address for forcast for washington D.C
     let forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?id=4140963&APPID=a2887188e8efc5d9f1e014fe7b8fc943"
@@ -56,20 +55,27 @@ class App extends Component {
         todaysDate: this.getCurrentTime(),
         currentTemp: kelvinToFahrenheit(data.list[0].main.temp),
         weather: data.list[0].weather,
+        weatherMain: data.list[0].weather[0].main,
         weatherDesc: data.list[0].weather[0].description
-      })
+      },()=> this.clothesFetch())
     })
+}
 
-    fetch('http://localhost:3001/items')
-    .then(res => res.json())
-    .then(wardrobe => {
-      console.log(wardrobe);
-      // debugger
-      this.setState({closet: wardrobe})
-    })
-  }
-
-
+ clothesFetch=()=>{
+let currentData = {weather: this.state.weatherMain, currentTemp: this.state.currentTemp}
+console.log(currentData)
+ fetch('http://localhost:3001/hello', {
+   method: "POST",
+   headers: {
+     "Content-Type": "application/json"
+   },
+   body: JSON.stringify(currentData)
+ })
+   .then(response => response.json())
+   .then(items => this.setState({
+     closet: items.items
+   }))
+ }
 
   render() {
     return (
