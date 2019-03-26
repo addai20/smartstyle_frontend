@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OutfitCard from '../Components/OutfitCard'
+import RowContainer from '../Components/OutfitCard'
 
 class OutfitContainer extends React.Component {
   debugger
@@ -8,32 +8,28 @@ class OutfitContainer extends React.Component {
   render(){
     return(
       <div className="outfitContainer">
-          <h2>Current Outfit</h2>
+          <h2>Today's Outfit</h2>
 
-           <OutfitCard
-             className="outfitCard"
-             bodyPart="head"
+           <RowContainer
+             bodyPart={"Head"}
              items={this.props.head}
              removeItem={this.props.removeItem}
             />
 
-            <OutfitCard
-              className="outfitCard"
-              bodyPart="torso"
+            <RowContainer
+              bodyPart={"Torso"}
               items={this.props.torso}
               removeItem={this.props.removeItem}
              />
 
-             <OutfitCard
-               className="outfitCard"
-               bodyPart="legs"
+             <RowContainer
+               bodyPart={"Legs"}
                items={this.props.legs}
               removeItem={this.props.removeItem}
               />
 
-              <OutfitCard
-                className="outfitCard"
-                bodyPart="feet"
+              <RowContainer
+                bodyPart={"Feet"}
                 items={this.props.feet}
                 removeItem={this.props.removeItem}
                />
