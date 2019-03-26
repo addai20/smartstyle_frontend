@@ -165,12 +165,14 @@ console.log(currentData)
           currentTemp={this.state.currentTemp}
           cityName={this.state.cityName}
           />
-        <div className="masterCont">
+        <div class="row align-items-start">
+        <div className="clothingCont" class="col-6">
           <ClothingContainer
             closet={this.state.closet}
-            forecast={this.state.forecast}
             onClickHandler={this.onClickHandler}
             />
+        </div>
+        <div className="outfitCont" class="col">
           <OutfitContainer
             removeItem={this.removeItemHandler}
             bodyParts={this.state.bodyParts}
@@ -179,6 +181,7 @@ console.log(currentData)
             legs={this.state.ootdLegs}
             feet={this.state.ootdFeet}
             />
+        </div>
         </div>
 
 
