@@ -8,6 +8,7 @@ class OutfitContainer extends React.Component {
   render(){
     return(
       <div className="outfitContainer">
+          <h2>Current Outfit</h2>
 
            <OutfitCard
              className="outfitCard"

@@ -165,19 +165,21 @@ console.log(currentData)
           currentTemp={this.state.currentTemp}
           cityName={this.state.cityName}
           />
-        <ClothingContainer
-          closet={this.state.closet}
-          forecast={this.state.forecast}
-          onClickHandler={this.onClickHandler}
-          />
-        <OutfitContainer
-          removeItem={this.removeItemHandler}
-          bodyParts={this.state.bodyParts}
-          head={this.state.ootdHead}
-          torso={this.state.ootdTorso}
-          legs={this.state.ootdLegs}
-          feet={this.state.ootdFeet}
-          />
+        <div className="masterCont">
+          <ClothingContainer
+            closet={this.state.closet}
+            forecast={this.state.forecast}
+            onClickHandler={this.onClickHandler}
+            />
+          <OutfitContainer
+            removeItem={this.removeItemHandler}
+            bodyParts={this.state.bodyParts}
+            head={this.state.ootdHead}
+            torso={this.state.ootdTorso}
+            legs={this.state.ootdLegs}
+            feet={this.state.ootdFeet}
+            />
+        </div>
 
 
 
