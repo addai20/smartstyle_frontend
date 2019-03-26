@@ -6,7 +6,7 @@ class OutfitCard extends Component {
   render(){
     return(
 
-      <div>
+      <div className="p-2 bd-highlight">
       <h3> {this.props.bodyPart.toUpperCase()}</h3>
       {this.props.items.map(obj => {
         return <div className="card-body" >

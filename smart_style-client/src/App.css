@@ -32,6 +32,10 @@
   }
 }
 
+.image {
+  background: transparent;
+}
+
 .clothingTitle {
   display: flex;
   justify-content: flex-start;
