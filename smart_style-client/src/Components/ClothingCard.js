@@ -8,8 +8,8 @@ class ClothingCard extends Component {
           <img
             src={this.props.item.img_url}
           />
-          <h6 className="card-title">{this.props.item.name}</h6>
-          <h7 className="card-subtitle mb-2 text-muted">{this.props.item.body_part}</h7>
+          <h5 className="card-title">{this.props.item.name}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">{this.props.item.body_part}</h6>
         </div>
       </div>
     )

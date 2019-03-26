@@ -32,12 +32,23 @@
   }
 }
 
-.clothing {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .clothingTitle {
   display: flex;
   justify-content: center;
+}
+
+.clothingContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.outfitContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.outfitCard {
+
 }

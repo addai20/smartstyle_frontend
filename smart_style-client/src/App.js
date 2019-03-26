@@ -34,7 +34,8 @@ class App extends Component {
   onClickHandler = (itemObj) =>{
     debugger
     console.log("On click handler invoked!");
-    this.setState({ootd[itemObj.bodyPart] = itemObj})
+    let ootdNow = this.state.ootd
+    debugger 
   }
 
 

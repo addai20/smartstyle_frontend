@@ -9,7 +9,7 @@ class ClothingContainer extends Component {
     return(
       <div>
       <h2 className="clothingTitle" > Recommended Clothing </h2>
-      <div className="d-flex flex-row bd-highlight mb-3 clothing">
+      <div className="d-flex flex-row bd-highlight mb-3 clothingContainer">
         {this.props.closet.map((ele, idx)=> {
           return <ClothingCard
             key={idx}
