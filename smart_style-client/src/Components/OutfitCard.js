@@ -8,10 +8,16 @@ class OutfitCard extends Component {
 
       <div>
       <h3> {this.props.bodyPart.toUpperCase()}</h3>
-      <h4> Hello World</h4>
-      <img
-        src="https://i.imgur.com/QF12xFEt.jpg"
-      />
+      {this.props.items.map(obj => {
+        return <div className="card-body" >
+          <img
+            alt="item"
+            src={obj.img_url}
+          />
+          <button type="button" className="btn btn-dark" onClick={()=>{this.props.removeItem(obj)}}> - </button>
+        </div>
+      })}
+
       </div>
     )
   }

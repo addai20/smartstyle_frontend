@@ -23,7 +23,11 @@ class App extends Component {
       currentTemp: null,
       forecast: [],
       closet:[],
-      ootd: [{body_part: "head"},{img_url: ""},{},{}]
+      ootdHead: [],
+      ootdTorso: [],
+      ootdLegs: [],
+      ootdFeet: []
+
     }
   }
 
@@ -32,11 +36,79 @@ class App extends Component {
   }
 
   onClickHandler = (itemObj) =>{
-    debugger
+
+
+    // debugger
     console.log("On click handler invoked!");
-    let ootdNow = this.state.ootd
-    debugger 
+    // get item body part from itemObj
+    let itemBp = itemObj.body_part
+
+    switch(itemBp){
+      case "head":
+        let ootdHead1 = this.state.ootdHead
+          if (ootdHead1.includes(itemObj)){
+            alert("Duplicate item clicked, plase choose another!")
+
+            break;
+          } else{
+            ootdHead1.push(itemObj)
+            this.setState({ootdHead: ootdHead1})
+            window.alert(`${itemObj.name} added to outfit!`)
+            break;}
+      case "torso":
+        let ootdTorso1 = this.state.ootdTorso
+        ootdTorso1.push(itemObj)
+        this.setState({ootdTorso: ootdTorso1})
+        window.alert(`${itemObj.name} added to outfit!`)
+        break
+      case "legs":
+        let ootdLegs1 = this.state.ootdLegs
+        ootdLegs1.push(itemObj)
+        this.setState({ootdLegs: ootdLegs1})
+        window.alert(`${itemObj.name} added to outfit!`)
+        break
+      case "feet":
+        let ootdFeet1 = this.state.ootdFeet
+        ootdFeet1.push(itemObj)
+        this.setState({ootdFeet: ootdFeet1})
+        window.alert(`${itemObj.name} added to outfit!`)
+    }
   }
+
+  removeItemHandler = (itemObj)=> {
+
+    console.log("removeItemHandler invoked!!", itemObj);
+
+  //get body_part from item
+    let body = itemObj.body_part
+    let currentState;
+    let newArr;
+
+    switch(body){
+      case "head" :
+        currentState = this.state.ootdHead
+        newArr = currentState.filter(obj => obj.name !== itemObj.name)
+        this.setState({ootdHead: newArr})
+        break;
+      case "torso" :
+        currentState = this.state.ootdTorso
+        newArr = currentState.filter(obj => obj.name !== itemObj.name)
+        this.setState({ootdTorso: newArr})
+        break;
+      case "legs" :
+        currentState = this.state.ootdLegs
+        newArr = currentState.filter(obj => obj.name !== itemObj.name)
+        this.setState({ootdLegs: newArr})
+        break;
+      case "feet" :
+        currentState = this.state.ootdFeet
+        newArr = currentState.filter(obj => obj.name !== itemObj.name)
+        this.setState({ootdFeet: newArr})
+        break;
+    }
+
+  }
+
 
 
   componentDidMount(){
@@ -88,8 +160,12 @@ class App extends Component {
           onClickHandler={this.onClickHandler}
           />
         <OutfitContainer
+          removeItem={this.removeItemHandler}
           bodyParts={this.state.bodyParts}
-          ootd={this.state.ootd}
+          head={this.state.ootdHead}
+          torso={this.state.ootdTorso}
+          legs={this.state.ootdLegs}
+          feet={this.state.ootdFeet}
           />
 
 
