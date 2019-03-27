@@ -5,7 +5,10 @@ import Nav from './Components/Nav'
 import ClothingContainer from './Containers/ClothingContainer'
 import OutfitContainer from './Containers/OutfitContainer'
 import Jumbotron from './Components/Jumbotron'
+import ItemFormCont from './Containers/ItemFormCont'
+import {BrowserRouter,Route, Redirect, Switch} from 'react-router-dom'
 const kelvinToFahrenheit = require('kelvin-to-fahrenheit');
+
 
 
 class App extends Component {
@@ -154,6 +157,27 @@ console.log(currentData)
    }))
  }
 
+ returnItems=(event)=>{
+
+ }
+
+ patchItems =(event)=>{
+   debugger
+   // let data = {name: event.target, currentTemp: this.state.currentTemp}
+   // console.log(data)
+   //  fetch('http://localhost:3001/items', {
+   //    method: "PATCH",
+   //    headers: {
+   //      "Content-Type": "application/json"
+   //    },
+   //    body: JSON.stringify(data)
+   //  })
+   //    .then(response => response.json())
+   //    .then(items => this.setState({
+   //      closet: items.items
+   //    }))
+ }
+
   render() {
     return (
       <div className="App">
@@ -165,14 +189,21 @@ console.log(currentData)
           currentTemp={this.state.currentTemp}
           cityName={this.state.cityName}
           />
+          <div className="browserRouter col-5">
+          <BrowserRouter>
+          <Switch>
+          <Route path="/clothes" render={()=> <ItemFormCont patchItems={this.patchItems}/>} />
+          </Switch>
+          </BrowserRouter>
+          </div>
         <div class="row align-items-start">
-        <div className="clothingCont" class="col-6">
+        <div className="clothingCont col-6">
           <ClothingContainer
             closet={this.state.closet}
             onClickHandler={this.onClickHandler}
             />
         </div>
-        <div className="outfitCont" class="col">
+        <div className="outfitCont col">
           <OutfitContainer
             removeItem={this.removeItemHandler}
             bodyParts={this.state.bodyParts}
