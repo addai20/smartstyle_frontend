@@ -162,20 +162,23 @@ console.log(currentData)
  }
 
  patchItems =(event)=>{
-   debugger
-   // let data = {name: event.target, currentTemp: this.state.currentTemp}
-   // console.log(data)
-   //  fetch('http://localhost:3001/items', {
-   //    method: "PATCH",
-   //    headers: {
-   //      "Content-Type": "application/json"
-   //    },
-   //    body: JSON.stringify(data)
-   //  })
-   //    .then(response => response.json())
-   //    .then(items => this.setState({
-   //      closet: items.items
-   //    }))
+   let data = {name: event.target.children[0].querySelector("#name").value,
+   body_part: event.target.children[1].querySelector("#body_part").value,
+   min_temp: event.target.children[2].querySelector("#Min").value,
+   max_temp: event.target.children[3].querySelector("#Max").value,
+   img_url: event.target.children[4].querySelector("#URL").value}
+   console.log(data)
+    fetch('http://localhost:3001/items', {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(items => this.setState({
+        closet: items.items
+      }))
  }
 
   render() {

@@ -10,7 +10,7 @@ class ItemForm extends Component {
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Which area of the body do you wear this?</label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select class="form-control" id="body_part">
       <option>Head</option>
       <option>Torso</option>
       <option>Legs</option>
